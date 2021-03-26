@@ -1,0 +1,6 @@
+@use 'src/styles/vars';
+
+.footer {
+  padding: vars.$gutter-article;
+  text-align: center;
+}
