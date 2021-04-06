@@ -3,6 +3,14 @@
 .header {
   text-align: center;
   padding: vars.$gutter-nav;
+  height: 15vh;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
 
   .header-link {
     margin: vars.$gutter-nav /2;
@@ -13,6 +21,7 @@
   }
 
   .logIn {
+    width: 60px;
     border: 2px solid transparent;
     color: white;
     background: rgb(3, 189, 127);
@@ -26,6 +35,7 @@
   }
 
   .SignUp {
+    width: 60px;
     border: 2px solid transparent;
     color: white;
     background: cornflowerblue;

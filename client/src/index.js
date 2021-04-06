@@ -12,7 +12,7 @@ import App from './components/App';
 //    => crée une structure d'objets imbriqués (DOM virtuel)
 const rootReactElement = (
   <Router>
-    <App />;
+    <App />
   </Router>
 );
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
