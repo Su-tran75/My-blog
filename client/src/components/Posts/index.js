@@ -11,18 +11,9 @@ import './posts.scss';
 const Posts = () => {
   const [postsList, setPostsList] = useState([]);
 
-  // useEffect(() => {
-  //   Axios.get('http://localhost:8081/api/get').then((response) => {
-  //     setPostsList(response.data);
-  //   });
-  // }, []);
-
   const [loadingPosts, setLoadingPosts] = useState(true);
 
   const loadPosts = () => {
-    // axios.get('http://localhost:8081/api/get').then((data) => {
-    //   console.log(data);
-    // });
     axios.get('http://localhost:8081/api/get')
       .then((response) => {
         setPostsList(response.data);

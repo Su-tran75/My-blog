@@ -1,0 +1,63 @@
+@use 'src/styles/vars';
+
+.singlePost {
+  min-height: 580px;
+  margin-top: 70px;
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.post-title {
+  font-family: vars.$title-font;
+  font-weight: vars.$title-font-weight;
+  text-transform: uppercase;
+  color: vars.$title-color;
+}
+
+.post-excerpt {
+  color: vars.$post-text-color;
+  font-size: 0.7rem;
+  text-align: left;
+  overflow:auto;
+}
+
+.button {
+  display: flex;
+  justify-content: space-evenly;
+
+  .button-edit {
+    margin: 0 20px;
+    width: 45px;
+    border: 2px solid transparent;
+    color: white;
+    background: rgb(3, 189, 127);
+    border-radius: 32px;
+    padding: 2px 0;
+    font-size: 0.7rem;
+
+    &.header-link--active, &:hover {
+      color:rgb(3, 189, 127);
+      background-color: white;
+    }
+  }
+
+  .button-delete {
+    margin: 0 20px;
+    width: 50px;
+    border: 2px solid transparent;
+    color: white;
+    background: rgb(230, 59, 7);
+    border-radius: 32px;
+    padding: 2px 0;
+    font-size: 0.7rem;
+
+    &.header-link--active, &:hover {
+      color:rgb(230, 59, 7);
+      background-color: white;
+    }
+  }
+}

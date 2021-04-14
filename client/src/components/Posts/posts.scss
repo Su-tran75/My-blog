@@ -10,7 +10,7 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 2em;
-    margin-bottom: vars.$gutter-article;
+    margin-bottom: vars.$gutter-article / 2;
   }
 
   .posts-container {
@@ -18,6 +18,7 @@
     flex-wrap: wrap;
 
     .post {
+      height: 300px;
       width: 50%;
       padding: 2rem;
       transition: all 0.2s ease-in-out;
@@ -25,7 +26,20 @@
       &:hover {
         background-color: vars.$post-hover-color;
         transition:ease;
+        cursor: pointer;
       }
+
+    }
+
+    .article {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 10% 80% 10%;
+      grid-template-areas: 
+        "title"
+        "text"
+        "button";
     }
 
     .post-title {
@@ -33,26 +47,26 @@
       font-weight: vars.$title-font-weight;
       text-transform: uppercase;
       color: vars.$title-color;
-      margin: 1rem;
+      grid-area: title;
     }
 
     .post-excerpt {
       color: vars.$post-text-color;
-      margin-top: 1rem;
+      grid-area: text;
+      overflow: hidden;
     }
 
     .button {
       display: flex;
       justify-content: space-evenly;
-      margin-top: 1rem;
+      grid-area: button;
 
       .button-edit {
-        width: 60px;
+        width: 50px;
         border: 2px solid transparent;
         color: white;
         background: rgb(3, 189, 127);
         border-radius: 32px;
-        padding: 5px;
     
         &.header-link--active, &:hover {
           color:rgb(3, 189, 127);
@@ -66,7 +80,6 @@
         color: white;
         background: rgb(230, 59, 7);
         border-radius: 32px;
-        padding: 5px;
     
         &.header-link--active, &:hover {
           color:rgb(230, 59, 7);

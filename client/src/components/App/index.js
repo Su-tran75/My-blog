@@ -7,12 +7,14 @@ import PropTypes from 'prop-types';
 import './app.scss';
 
 // Import components
-import Header from 'src/components/Header';
-import Posts from 'src/components/Posts';
-import Footer from 'src/components/Footer';
-import CreatePost from 'src/components/CreatePost';
-import LoginForm from 'src/components/LoginForm';
-import SignUpForm from 'src/components/SignUpForm';
+import Header from '../Header';
+import Posts from '../Posts';
+import Footer from '../Footer';
+import CreatePost from '../CreatePost';
+import LoginForm from '../LoginForm';
+import SignUpForm from '../SignUpForm';
+import SinglePost from '../SinglePost';
+import UpdatePost from '../UpdatePost';
 
 // == Import
 
@@ -32,6 +34,12 @@ const App = ({ isLogged }) => (
       </Route>
       <Route path="/loginForm">
         <LoginForm />
+      </Route>
+      <Route path="/post/:id">
+        <SinglePost />
+      </Route>
+      <Route path="/update/:id">
+        <UpdatePost />
       </Route>
       <Route>
         <div className="page404">
