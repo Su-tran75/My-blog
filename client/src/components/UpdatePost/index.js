@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 
 import './updatePost.scss';
 
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UpdatePost = () => {
+const UpdatePost = (props) => {
   const classes = useStyles();
 
   const { id } = useParams();
@@ -48,15 +50,16 @@ const UpdatePost = () => {
     if (newTitle !== '' && newText !== '') {
       axios.put(`http://localhost:8081/api/updateFromId/${id}`, { newTitle, newText })
         .then(() => {
-          alert('post updated');
+          props.history.push(`/post/${id}`);
+          // alert('post updated');
         })
         .catch((err) => {
           console.log(err);
         });
     }
-    else {
-      alert('Title and text are required');
-    }
+    // else {
+    //   alert('Title and text are required');
+    // }
   };
 
   useEffect(() => {
@@ -68,6 +71,9 @@ const UpdatePost = () => {
     <div className="updatePost">
       <h1>Update post</h1>
       <form className={classes.root} noValidate autoComplete="off">
+        <Link to={`/post/${id}`}>
+          <KeyboardReturnIcon />
+        </Link>
         <TextField
           id="outlined-basic"
           label="Title required"
@@ -102,6 +108,11 @@ const UpdatePost = () => {
       </form>
     </div>
   );
+};
+
+UpdatePost.propTypes = {
+  history: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
 };
 
 export default UpdatePost;

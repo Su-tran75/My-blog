@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, Redirect } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { FirebaseContext } from '../Firebase';
 
 import './singlePost.scss';
 
-const SinglePost = ({ isLogged }) => {
+const SinglePost = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const history = useHistory();
@@ -35,32 +36,46 @@ const SinglePost = ({ isLogged }) => {
       });
   }, []);
 
+  const firebase = useContext(FirebaseContext);
+  const [userSession, setUserSession] = useState(null);
+  useEffect(() => {
+    const listener = firebase.auth.onAuthStateChanged((user) => {
+      user ? setUserSession(user) : props.history.push(`/post/${id}`)
+    });
+    return () => {
+      listener();
+    };
+  }, []);
+
+  const displayBtn = userSession ? (
+    <div className="button">
+      <button
+        type="button"
+        className="button-edit"
+        onClick={() => {
+          history.push(`/update/${id}`);
+        }}
+      >
+        Edit
+      </button>
+
+      <button
+        type="button"
+        className="button-delete"
+        onClick={deletePost}
+      >
+        Delete
+      </button>
+    </div>
+  ) : (
+    ''
+  );
+
   return (
     <article className="singlePost">
       <h2 className="post-title">{post.title}</h2>
       <p className="post-excerpt">{post.text}</p>
-      {/* // TODO rectifier isLogged */}
-      {!isLogged && (
-      <div className="button">
-        <button
-          type="button"
-          className="button-edit"
-          onClick={() => {
-            history.push(`/update/${id}`);
-          }}
-        >
-          Edit
-        </button>
-
-        <button
-          type="button"
-          className="button-delete"
-          onClick={deletePost}
-        >
-          Delete
-        </button>
-      </div>
-      )}
+      { displayBtn }
     </article>
   );
 };

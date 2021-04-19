@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
+import PropTypes from 'prop-types';
 
 import './createPost.scss';
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const classes = useStyles();
 
   const [title, setTitle] = useState('');
@@ -32,10 +33,12 @@ const CreatePost = () => {
 
   const submitPost = () => {
     Axios.post('http://localhost:8081/api/create', { title, text });
+    props.history.push('/');
   };
 
   return (
     <div className="createPost">
+      <h1>Create a new post</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           id="outlined-basic"
@@ -59,6 +62,11 @@ const CreatePost = () => {
       </form>
     </div>
   );
+};
+
+CreatePost.propTypes = {
+  history: PropTypes.object.isRequired,
+  push: PropTypes.func,
 };
 
 export default CreatePost;

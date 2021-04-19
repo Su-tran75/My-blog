@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+
+.btn {
+  text-align: center;
+  padding: vars.$gutter-nav;
+  min-height: 70vh;
+
+  .header-link {
+    margin: vars.$gutter-nav /2;
+
+    &.header-link--active, &:hover {
+      color: vars.$primary-color;
+    }
+  }
+
+  .logIn {
+    width: 60px;
+    border: 2px solid transparent;
+    color: white;
+    background: rgb(3, 189, 127);
+    border-radius: 32px;
+    padding: 5px;
+
+    &.header-link--active, &:hover {
+      color:rgb(3, 189, 127);
+      background-color: white;
+    }
+  }
+
+  .SignUp {
+    width: 60px;
+    border: 2px solid transparent;
+    color: white;
+    background: cornflowerblue;
+    border-radius: 32px;
+    padding: 5px;
+
+    &.header-link--active, &:hover {
+      color: cornflowerblue;
+      background-color: white;
+    }
+  }
+}

@@ -15,45 +15,33 @@ import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
 import SinglePost from '../SinglePost';
 import UpdatePost from '../UpdatePost';
+import Welcome from '../Welcome';
 
 // == Import
 
 // == Composant
-const App = ({ isLogged }) => (
+const App = () => (
   <div className="app">
     <Header />
+
     <Switch>
-      <Route exact path="/">
-        <Posts />
-      </Route>
-      <Route path="/createPost">
-        <CreatePost />
-      </Route>
-      <Route path="/signUpForm">
-        <SignUpForm />
-      </Route>
-      <Route path="/loginForm">
-        <LoginForm />
-      </Route>
-      <Route path="/post/:id">
-        <SinglePost />
-      </Route>
-      <Route path="/update/:id">
-        <UpdatePost />
-      </Route>
+      <Route path="/welcome" component={Welcome} />
+      <Route path="/createPost" component={CreatePost} />
+      <Route path="/signUpForm" component={SignUpForm} />
+      <Route path="/loginForm" component={LoginForm} />
+      <Route path="/post/:id" component={SinglePost} />
+      <Route path="/update/:id" component={UpdatePost} />
+      <Route exact path="/" component={Posts} />
       <Route>
         <div className="page404">
           Sorry... page not found !
         </div>
       </Route>
     </Switch>
+
     <Footer />
   </div>
 );
-
-App.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-};
 
 // == Export
 export default App;

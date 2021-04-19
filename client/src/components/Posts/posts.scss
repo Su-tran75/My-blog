@@ -3,6 +3,12 @@
 .posts {
   //max-width: 600px;
 
+  .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
   .title {
     font-family: vars.$title-font;
     font-weight: vars.$title-font-weight;
